@@ -92,6 +92,7 @@ cp train* v2
 
 Note: Make sure that your fasta file header follows this schema:
 >uniq_id|category|group|name
+
 Note2: this step requires a large amount of computational resources and may need to be performed in a cluster.
 ```bash
 python / path/to/deeparg-ss/argdb/train_arc_genes.py /path/to/TF_sequences/folder /path/to/v2/folder 
