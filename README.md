@@ -1,13 +1,13 @@
 # PredicTF: a tool to predict bacterial transcription factors in complex microbial communities
 
-# 1) Overview:**
+# 1) Overview:
 Transcription Factors (TFs) are proteins controlling the rate of genetic information, regulating cellular gene expression. A better understanding of TFs in a bacterial community context open revenues for exploring gene regulation in ecosystems where bacteria play a key role. Here we describe PredicTF, the first platform supporting the prediction and classification of putative bacterial TF not only in single species but also in complex microbial communities. In summary, we collected publicly available data on TFs. Initially, we chose to collect data from CollecTF; a bacterial TF database containing experimentally validated TFs. This database was merged to TF sequences from UNIPROT. This merged and hand curated TF database (bacTFDB) was used to train a deep learning model (PredicTF) to predict new TFs and their families for genomes and metagenomes. Validation of the method can be found in the manuscript XXXXX. Here, we describe the use of PredicTF to predict TFs for single bacterial species (genomes and metatranscriptomes) and complex communities (metagenomes and metatranscriptomes) (Figure 1). Using PredicTF, the user can determine TFs distribution in complex communities, what opens the potential to evaluate regulatory networks in different ecosystems. PredictTF is open-source software.
 
 ![workflow] (https://github.com/mdsufz/PredicTF/blob/master/workflow.jpeg)
 **Rational of the pipeline.**
 The pipeline uses The Bacterial Transcription Factor Database (bacTFDB) and DeepARG approach to train (1. Training) a Deep Learning model named PredicTF.  PredicTF can use Genomes (a.1) or Metagenomes (b.1) as input, providing predictions of novel transcription factors that are listed in a file with their respective TF families (2. Prediction & Annotation). Finally, TFs listed and annotated can be mapped in the Transcriptomes (a.2) or Metatranscriptomes (b.2) providing a list of actives TFs in a specific condition (3. Mapping transcripts TFs). 
 
-# 2)	System Requirements**
+# 2)	System Requirements
 The resource requirements for this pipeline will vary greatly based on the amount of data in your DATABASE. The training step requires intensive computational resources, because of the deep learning, so it is recommended to do the training using the GPU routines from Theano a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently (http://deeplearning.net/software/theano/) (Team, T. T. D. et al., 2016). However, heavy computation is required only once to obtain the deep learning model (PredicTF) and the prediction routines do not require such computational resources. PredicTF is an open source tool updated twice a year and it can be downloaded from the GitHub page. 
 
 # 3)	Database**
@@ -22,7 +22,7 @@ Example: >A0A024HKB0|FEATURES|CollecTF|LysR|ClcR**
 
 In this example A0A024HKB0 is the unique number that identify a specific TF, FEATURES is mandatory, CollecTF is the database where the sequence came from, LysR is the family (group) of transcription factor that ClcR (name) belongs. 
 
-# 4)	PredicTF Pipeline** 
+# 4)	PredicTF Pipeline
 To use PredicTF it is required some dependencies.
 The pipeline was developed in python 2.7 and requires DIAMOND for making the alignments.
 
@@ -37,7 +37,7 @@ Open a terminal and clone the source code:
 git clone https://xxxxxxxx
 
 
-# 5) Usage**
+# 5) Usage
 
 **1) Activating DeepARG v2.0 environment in the terminal
 
