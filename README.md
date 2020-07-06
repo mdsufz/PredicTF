@@ -62,8 +62,8 @@ mkdir v2
 
 **Steps 3 to 8 are for those who created their own databases and will train their own models.**
 
-**Very Important: 
-If you are using PredicTF with bacTFDB (database described in this github), skip steps 3 to 8**
+# Very Important: 
+**If you are using PredicTF with bacTFDB (database described in this github), skip steps 3 to 8**
 
 **3) Generating a sequence length file**
 This file will contain the headers and the protein length for each TF belonging to the database. This file will be used in the training step.  
