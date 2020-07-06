@@ -14,8 +14,9 @@ The resource requirements for this pipeline will vary greatly based on the amoun
 To create the Bacterial Transcription Factor Data Base (bacTFDB), we collected data from two publicly available databases. Initially, we chose to collect data from CollecTF (REF), a well described and characterized database. Since CollecTF does not provide an API for bulk download, we develop Python code (version 2.7) using the Beautiful Soup 4.4.0 library to recover the data from CollecTF. With this strategy we listed 390 TF experimentally validated amino acid sequences distributed over 44 TFs families. Additionally, we retrieved TF amino acid sequences from UNIPROT using UNIPROT API filtering for Reviewed (Swiss-Prot) - Manually annotated, from bacteria taxonomy and key words (Transcriotion factor, transcriptional factor, regulator, transcriptional repressor, transcriptional activator, transcriptional regulator). The UNIPROT API was accessed 8-Sep-2019 accumulating 21.581 TF amino acid sequences. We merged the data from CollecTF and UNIPROT databases which resulted in a total of 21.971 TFs amino acid. We removed redundant TF entries and since PredicTF was designed to also assign TF family, TF sequences lacking a TF family were removed. Finally, a manual inspection was performed to remove misleading of spelling, case sensitive and presence of characters associate to the database header. The final database (bacTFDB) contains a total of 11.691 TF unique sequences (Figure 2). 
 To create your own database, you need to make sure that your .fasta file header follows this schema (an example file can be downloaded from here):
 
-**>uniq_id|FEATURES|category|group|name
-Example: >A0A024HKB0|FEATURES|CollecTF|LysR|ClcR**
+**>uniq_id|FEATURES|category|group|name**
+
+**Example: >A0A024HKB0|FEATURES|CollecTF|LysR|ClcR**
 
 ![Database](https://github.com/mdsufz/PredicTF/blob/master/database.jpeg)
 **Scheme used for the construction of bacTFDB**
