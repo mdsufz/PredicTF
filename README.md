@@ -27,7 +27,7 @@ To use PredicTF it is required some dependencies.
 The pipeline was developed in python 2.7 and requires DIAMOND for making the alignments.
 
 **4.1) DEPENDENCIES**
-PredicTF requires the next python modules (all can be installed via pip):
+PredicTF requires the following python modules (all can be installed via pip):
 Nolearn lasagne deep learning library (https://lasagne.readthedocs.io/en/latest/).
 Sklearn machine learning routines (https://scikit-learn.org/stable/).
 Theano for fast computation. For GPU usage (see Theano documentation) (http://deeplearning.net/software/theano/).
@@ -39,7 +39,7 @@ git clone https://xxxxxxxx
 
 # 5) Usage
 
-**1) Activating DeepARG v2.0 environment in the terminal
+**1) Activating DeepARG v2.0 environment in the terminal**
 
 ```bash
 module load python/2 diamond
@@ -60,7 +60,7 @@ cd model
 mkdir v2 
 ```
 
-**Steps 3 to 8 are for those who created their own databases and will train their own models.
+**Steps 3 to 8 are for those who created their own databases and will train their own models.**
 
 **Very Important: 
 If you are using PredicTF with bacTFDB (database described in this github), skip steps 3 to 8**
@@ -97,7 +97,7 @@ Note2: this step requires a large amount of computational resources and may need
 python / path/to/deeparg-ss/argdb/train_arc_genes.py /path/to/TF_sequences/folder /path/to/v2/folder 
 ```
 
-**9) Predicting TFs (genomes or metagenomes)
+**9) Predicting TFs (genomes or metagenomes)**
 **Predicting TFs using the generated database**
 ```bash
 python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/to/target/genomes/genome.fasta --out path/to/results/folder/file2.out --folder #path/to/parent/folder/of/model_and_v2 #where the latter folders were created
