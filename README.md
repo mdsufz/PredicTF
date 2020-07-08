@@ -35,8 +35,9 @@ Theano for fast computation. For GPU usage (see Theano documentation) (http://de
 
 **4.2) INSTALATION**
 Open a terminal and clone the source code:
-git clone https://xxxxxxxx
-
+```bash
+git clone git@github.com:mdsufz/PredicTF.git
+```
 
 # 5) Usage
 
@@ -61,7 +62,7 @@ cd model
 mkdir v2 
 ```
 
-**Steps 3 to 8 are for those who created their own databases and will train their own models.**
+**Steps 3 to 9 are for those who created their own databases and will train their own models.**
 
 # Very Important: 
 **If you are using PredicTF with bacTFDB (database described in this github), skip steps 3 to 8**
