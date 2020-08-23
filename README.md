@@ -104,4 +104,20 @@ python / path/to/deeparg-ss/argdb/train_arc_genes.py /path/to/TF_sequences/folde
 **Predicting TFs using the generated database**
 ```bash
 python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/to/target/genomes/genome.fasta --out path/to/results/folder/file2.out --folder #path/to/parent/folder/of/model_and_v2 #where the latter folders were created
+```
+
+**9) Mapping TFs (transcriptomes or metatranscriptomes)**
+
+Processing the output of Predicting TFs (step 9)
+```bash
+python process_output_predictf.py <deeparg/file.out.align.daa.tsv> <deeparg/file.out.mapping.ARG> <sequences_input.fa> <predicted_TFs.fa> <predicted_TFs_intervals.tsv>
+```
+Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes
+```bash
+python get_mapped_regions.sam <mapping.sam> <output_directory>
+```
+Checking if the predicted TFs are covered by the transcriptome or metatranscriptome
+```bash
+python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.tsv>
+```
 
