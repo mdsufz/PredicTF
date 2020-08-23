@@ -25,13 +25,24 @@ In this example A0A024HKB0 is the unique number that identify a specific TF, FEA
 
 # 4)	PredicTF Pipeline
 To use PredicTF it is required some dependencies.
-The pipeline was developed in python 2.7 and requires DIAMOND for making the alignments.
+
+Operating system: Linux64
+
+Programming languages: Python 2.7
 
 **4.1) DEPENDENCIES**
 PredicTF requires the following python modules (all can be installed via pip):
-Nolearn lasagne deep learning library (https://lasagne.readthedocs.io/en/latest/).
-Sklearn machine learning routines (https://scikit-learn.org/stable/).
-Theano for fast computation. For GPU usage (see Theano documentation) (http://deeplearning.net/software/theano/).
+DeepARG [1];
+DIAMOND [2]; 
+Nolearn Lasagne deep learning library [3]; 
+Sklearn machine learning routines (https://scikit-learn.org/stable/) [4]; 
+Theano (http://deeplearning.net/software/theano/) [5]. 
+Trim Galore - v0.0.4 dev (https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) [6]. 
+MetaSPADES - v3.12.0 (https://github.com/ablab/spades#meta) [7]. 
+Emboss transeq (http://www.bioinformatics.nl/cgi-bin/emboss/transeq) [8]. 
+Bowtie2 - v2.3.0 (https://sourceforge.net/projects/bowtie-bio/) [9]. 
+SAMTools - v1.9 (http://github.com/samtools/) [10].
+
 
 **4.2) INSTALATION**
 Open a terminal and clone the source code:
@@ -108,16 +119,30 @@ python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/t
 
 **9) Mapping TFs (transcriptomes or metatranscriptomes)**
 
-Processing the output of Predicting TFs (step 9)
+Processing the output of Predicting TFs (step 9):
 ```bash
 python process_output_predictf.py <deeparg/file.out.align.daa.tsv> <deeparg/file.out.mapping.ARG> <sequences_input.fa> <predicted_TFs.fa> <predicted_TFs_intervals.tsv>
 ```
-Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes
+Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes:
 ```bash
 python get_mapped_regions.sam <mapping.sam> <output_directory>
 ```
-Checking if the predicted TFs are covered by the transcriptome or metatranscriptome
+Checking if the predicted TFs are covered by the transcriptome or metatranscriptome:
 ```bash
 python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.tsv>
 ```
 
+**10) Cite us:**
+
+
+**11) References**
+1. Arango-Argoty G, Garner E, Pruden A, Heath LS, Vikesland P, Zhang L. DeepARG: A deep learning approach for predicting antibiotic resistance genes from metagenomic data. Microbiome. BioMed Central Ltd.; 2018;6. 
+2. Buchfink B, Xie C, Huson DH. Fast and sensitive protein alignment using DIAMOND. Nat. Methods. Nature Publishing Group; 2014. p. 59–60. 
+3. van Merriënboer B, Bahdanau D, Dumoulin V, Serdyuk D, Warde-Farley D, Chorowski J, et al. Blocks and Fuel: Frameworks for deep learning. arxiv.org [Internet]. 2015 [cited 2020 Jun 15]; Available from: https://arxiv.org/abs/1506.00619
+4. Pedregosa FABIANPEDREGOSA F, Michel V, Grisel OLIVIERGRISEL O, Blondel M, Prettenhofer P, Weiss R, et al. Scikit-learn: Machine Learning in Python Gaël Varoquaux Bertrand Thirion Vincent Dubourg Alexandre Passos PEDREGOSA, VAROQUAUX, GRAMFORT ET AL. Matthieu Perrot [Internet]. J. Mach. Learn. Res. 2011. Available from: http://scikit-learn.sourceforge.net.
+5. The Theano Development Team, Al-Rfou R, Alain G, Almahairi A, Angermueller C, Bahdanau D, et al. Theano: A Python framework for fast computation of mathematical expressions. 2016 [cited 2020 Jun 15]; Available from: https://groups.google.com/group/theano-dev/
+6. Krueger F. Babraham Bioinformatics - Trim Galore! [Internet]. Version 0.5.0. 2018 [cited 2020 Jul 29]. Available from: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+7. Nurk S, Meleshko D, Korobeynikov A, Pevzner PA. MetaSPAdes: A new versatile metagenomic assembler. Genome Res [Internet]. 2017 [cited 2020 Jul 29];27:824–34. Available from: http://www.genome.org/cgi/doi/10.1101/gr.213959.116.
+8. Madeira F, Park YM, Lee J, Buso N, Gur T, Madhusoodanan N, et al. The EMBL-EBI search and sequence analysis tools APIs in 2019. Nucleic Acids Res [Internet]. 2019 [cited 2020 Jul 29];47:W636–41. Available from: https://academic.oup.com/nar/article-abstract/47/W1/W636/5446251
+9. Langmead B, Salzberg SL. Fast gapped-read alignment with Bowtie 2. Nat Methods [Internet]. 2012 [cited 2020 Jul 29];9:357–9. Available from: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
+10. Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, et al. The Sequence Alignment/Map format and SAMtools. Bioinformatics [Internet]. 2009 [cited 2020 Jul 29];25:2078–9. Available from: https://academic.oup.com/bioinformatics/article-abstract/25/16/2078/204688
