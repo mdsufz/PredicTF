@@ -147,10 +147,10 @@ python get_mapped_regions.sam <mapping.sam> <output_directory>
 python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.tsv>
 ```
 
-**10) Cite us:**
+# 6) Cite us:
 
 
-**11) References**
+# 7) References
 1. Arango-Argoty G, Garner E, Pruden A, Heath LS, Vikesland P, Zhang L. DeepARG: A deep learning approach for predicting antibiotic resistance genes from metagenomic data. Microbiome. BioMed Central Ltd.; 2018;6. 
 2. Buchfink B, Xie C, Huson DH. Fast and sensitive protein alignment using DIAMOND. Nat. Methods. Nature Publishing Group; 2014. p. 59–60. 
 3. van Merriënboer B, Bahdanau D, Dumoulin V, Serdyuk D, Warde-Farley D, Chorowski J, et al. Blocks and Fuel: Frameworks for deep learning. arxiv.org [Internet]. 2015 [cited 2020 Jun 15]; Available from: https://arxiv.org/abs/1506.00619
