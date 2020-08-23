@@ -31,16 +31,27 @@ Operating system: Linux64
 Programming languages: Python 2.7
 
 **4.1) DEPENDENCIES**
+
 PredicTF requires the following python modules (all can be installed via pip):
+
 DeepARG [1];
+
 DIAMOND [2]; 
+
 Nolearn Lasagne deep learning library [3]; 
+
 Sklearn machine learning routines (https://scikit-learn.org/stable/) [4]; 
+
 Theano (http://deeplearning.net/software/theano/) [5]. 
+
 Trim Galore - v0.0.4 dev (https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) [6]. 
+
 MetaSPADES - v3.12.0 (https://github.com/ablab/spades#meta) [7]. 
+
 Emboss transeq (http://www.bioinformatics.nl/cgi-bin/emboss/transeq) [8]. 
+
 Bowtie2 - v2.3.0 (https://sourceforge.net/projects/bowtie-bio/) [9]. 
+
 SAMTools - v1.9 (http://github.com/samtools/) [10].
 
 
