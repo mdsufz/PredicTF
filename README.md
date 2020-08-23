@@ -58,7 +58,7 @@ SAMTools - v1.9 (http://github.com/samtools/) [10].
 
 **4.2) INSTALATION**
 
-1) First you must be sure that DeepArg was correctly installed
+1) First you must be sure that DeepARG [1] was correctly installed
 
 2) Open a terminal and clone the source code:
 ```bash
