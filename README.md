@@ -30,9 +30,10 @@ Operating system: Linux64
 
 Programming languages: Python 2.7
 
+
 **4.1) DEPENDENCIES**
 
-PredicTF requires the following python modules (all can be installed via pip):
+PredicTF requires the instalation:
 
 DeepARG [1];
 
@@ -56,7 +57,10 @@ SAMTools - v1.9 (http://github.com/samtools/) [10].
 
 
 **4.2) INSTALATION**
-Open a terminal and clone the source code:
+
+1) First you must be sure that DeepArg was correctly installed
+
+2) Open a terminal and clone the source code:
 ```bash
 git clone git@github.com:mdsufz/PredicTF.git
 ```
@@ -128,17 +132,17 @@ python / path/to/deeparg-ss/argdb/train_arc_genes.py /path/to/TF_sequences/folde
 python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/to/target/genomes/genome.fasta --out path/to/results/folder/file2.out --folder #path/to/parent/folder/of/model_and_v2 #where the latter folders were created
 ```
 
-**9) Mapping TFs (transcriptomes or metatranscriptomes)**
+**10) Mapping TFs (transcriptomes or metatranscriptomes)**
 
-Processing the output of Predicting TFs (step 9):
+1) Processing the output of Predicting TFs (step 9):
 ```bash
 python process_output_predictf.py <deeparg/file.out.align.daa.tsv> <deeparg/file.out.mapping.ARG> <sequences_input.fa> <predicted_TFs.fa> <predicted_TFs_intervals.tsv>
 ```
-Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes:
+2) Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes:
 ```bash
 python get_mapped_regions.sam <mapping.sam> <output_directory>
 ```
-Checking if the predicted TFs are covered by the transcriptome or metatranscriptome:
+3) Checking if the predicted TFs are covered by the transcriptome or metatranscriptome:
 ```bash
 python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.tsv>
 ```
