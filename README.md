@@ -23,7 +23,7 @@ In this example A0A024HKB0 is the unique number that identify a specific TF, FEA
 **Note: an example file can be downloaded from [here].
 
 ![Database](https://github.com/mdsufz/PredicTF/blob/master/database.jpeg)
-**Scheme used for the construction of BacTFDB**
+**Scheme used for the construction of BacTFDB.**
 Bacterial Transcription Factor Data Base (bacTFDB) were created from from two publicly available databases. We collect 390 TFs from CollecTF and 21.581 from UniProt  (accessed 8-Sep-2019) accumulating 21.581 TF amino acid sequences. We merged the data from CollecTF and UniProt databases resulting in a total of 21.971 TFs amino acid. We removed redundant TF entries and since PredicTF was designed to also assign TF family, TF sequences lacking a TF family were removed. Finally, a manual inspection was performed to remove misleading of spelling, case sensitive and presence of characters associate to the database header. The final database (bacTFDB) contains a total of 11.691 TF unique sequences.
 
 
@@ -33,6 +33,7 @@ To use PredicTF it is required some dependencies.
 Operating system: Linux64
 
 Programming languages: Python 2.7
+
 
 
 **4.1) DEPENDENCIES**
@@ -60,6 +61,7 @@ Bowtie2 - v2.3.0 (https://sourceforge.net/projects/bowtie-bio/) [9].
 SAMTools - v1.9 (http://github.com/samtools/) [10].
 
 
+
 **4.2) INSTALATION**
 
 1) First you must be sure that DeepARG [1] was correctly installed
@@ -70,6 +72,7 @@ git clone git@github.com:mdsufz/PredicTF.git
 ```
 
 # 5) Usage
+
 
 **1) Activating DeepARG v2.0 environment in the terminal**
 
@@ -93,8 +96,8 @@ mkdir v2
 
 **Steps 3 to 8 are for those who created their own databases and will train their own models.**
 
-# Very Important: 
-**If you are using PredicTF with BacTFDB (database described in this github), skip steps 3 to 8**
+**Very Important: If you are using PredicTF with BacTFDB (database described in this github), skip steps 3 to 8**
+
 
 **3) Generating a sequence length file**
 This file will contain the headers and the protein length for each TF belonging to the database. This file will be used in the training step.  
@@ -136,7 +139,9 @@ python / path/to/deeparg-ss/argdb/train_arc_genes.py /path/to/TF_sequences/folde
 ```
 
 **9) Predicting TFs (genomes or metagenomes)**
+
 **Predicting TFs using the generated database**
+
 ```bash
 python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/to/target/genomes/genome.fasta --out path/to/results/folder/file2.out --folder #path/to/parent/folder/of/model_and_v2 #where the latter folders were created
 ```
@@ -144,16 +149,19 @@ python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/t
 **10) Mapping TFs (transcriptomes or metatranscriptomes)**
 
 1) Processing the output of Predicting TFs (step 9):
+
 ```bash
 python process_output_predictf.py <deeparg/file.out.align.daa.tsv> <deeparg/file.out.mapping.ARG> <sequences_input.fa> <predicted_TFs.fa> <predicted_TFs_intervals.tsv>
 ```
 
 2) Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes:
+
 ```bash
 python get_mapped_regions.sam <mapping.sam> <output_directory>
 ```
 
 3) Checking if the predicted TFs are covered by the transcriptome or metatranscriptome:
+
 ```bash
 python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.tsv>
 ```
@@ -162,6 +170,7 @@ python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.
 
 
 # 7) References
+
 1. Arango-Argoty G, Garner E, Pruden A, Heath LS, Vikesland P, Zhang L. DeepARG: A deep learning approach for predicting antibiotic resistance genes from metagenomic data. Microbiome. BioMed Central Ltd.; 2018;6. 
 2. Buchfink B, Xie C, Huson DH. Fast and sensitive protein alignment using DIAMOND. Nat. Methods. Nature Publishing Group; 2014. p. 59–60. 
 3. van Merriënboer B, Bahdanau D, Dumoulin V, Serdyuk D, Warde-Farley D, Chorowski J, et al. Blocks and Fuel: Frameworks for deep learning. arxiv.org [Internet]. 2015 [cited 2020 Jun 15]; Available from: https://arxiv.org/abs/1506.00619
