@@ -18,6 +18,7 @@ To create your own database, the header in your FASTA file needs to match the fo
 **>uniq_id|FEATURES|category|group|name**
 
 **Example: >A0A024HKB0|FEATURES|CollecTF|LysR|ClcR**
+
 In this example A0A024HKB0 is the unique number that identify a specific TF, FEATURES is mandatory, CollecTF is the database where the sequence came from, LysR is the family (group) of transcription factor that ClcR (name) belongs. 
 
 **Note: an example file can be downloaded from [here].
