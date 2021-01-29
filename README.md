@@ -169,7 +169,7 @@ python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.
 
 # 6) Cite us:
 
-A preprint version of PredicTF is available [here](https://www.researchsquare.com/article/rs-52281/v1). A link to the published manuscript will be provided as soon as possible.
+A preprint version of PredicTF is available [here](https://www.biorxiv.org/content/10.1101/2021.01.28.428666v2). A link to the published manuscript will be provided as soon as possible.
 
 # 7) References
 
