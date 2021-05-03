@@ -78,7 +78,7 @@ git clone git@github.com:mdsufz/PredicTF.git
 **1) Activating DeepARG v2.0 environment in the terminal**
 
 ```bash
-source /path_to_deeparg-ss/deeparg-ss/env-deeparg/bin/activate
+source /path_to_deeparg-ss/deeparg-ss/env-deeparg/bin/activate # Needs to be changed for our folder with deeparg installed. 
 ```
 
 **2) Creating folders**
@@ -99,33 +99,38 @@ mkdir v2
 
 **Very Important: If you are using PredicTF with BacTFDB (database described in this github), skip steps 3 to 8**
 
-
-**3) Generating a sequence length file**
-This file will contain the headers and the protein length for each TF belonging to the database. This file will be used in the training step.  
+Create a /database folder inside the project folder:
 ```bash
-python seq_length.py  /path/to/folder/file/with/TF_sequences.fasta > /path/to/folder/features.protein.length 
+mkdir /path/to/project/folder/database
+```  
+**3) Generating a sequence length file**
+This file will contain the headers and the protein lengths for each TF belonging to the database. This file will be used in the training step.  
+```bash
+python seq_length.py  /path/to/folder/file/with/TF_sequences.fasta > /path/to/project/folder/features.gene.length 
 ```
 
 **4) Building database index:**
 ```bash
-/path/to/deeparg-ss/bin/diamond makedb --in /path/to/folder/file/with/TF_sequences.fasta --db /path/to/folder/TF_sequences
+/path/to/predictf/installation/bin/diamond makedb --in /path/to/folder/file/with/TF_sequences.fasta --db /path/to/project/folder/features #this step will create a .dmnd file called *features*.
 ```
 
 **5) Generating gene-like sequences from database:**
 ```bash
-python /path/to/deeparg-ss/train/generate_train_genes.py /path/to/folder/file/with/TF_sequences.fasta /train_genes.fasta train
+python /path/to/predictf/installation/train/generate_train_genes.py /path/to/folder/file/with/TF_sequences.fasta /path/to/project/folder/train_genes.fasta train
 ```
 
 **6) Building similarity matrix:**
 ```bash
-/path/to/deeparg-ss/bin/diamond blastp --db /path/to/ TF_sequences.dmnd --query /path/to/train_genes.fasta --id 30 --evalue 1e-10 --sensitive -k 10000 -a /train_genes
+/path/to/predictf/installation/bin/diamond blastp --db /path/to/project/folder/features --query /path/to/project/folder/train_genes.fasta --id 30 --evalue 1e-10 --sensitive -k 10000 -a /path/to/project/folder/train_genes # This will create a diamond alignment file ".daa".
 
-/path/to/deeparg-ss/bin/diamond view -a /path/to/train_genes.daa -o /train_genes.tsv
+/path/to/predictf/installation/bin/diamond view -a /path/to/project/folder/train_genes.daa -o /path/to/project/folder/train_genes.tsv
 ```
 
-**7) Copy files all train files to the created v2 folder (# files : train_genes.daa  train_genes.fasta  train_genes.tsv)**
+**7) Make copies of the files train* and features* in the /v2 and /database folders**
 ```bash
 cp train* v2
+cp features.* path/to/project/folder/database/ 
+cp train* path/to/project/folder/database/
 ```
 
 **8) Training the model**
@@ -136,7 +141,7 @@ Note: Make sure that your fasta file header follows this schema:
 Note2: this step requires a large amount of computational resources and may need to be performed in a cluster.
 
 ```bash
-python / path/to/deeparg-ss/argdb/train_arc_genes.py /path/to/TF_sequences/folder /path/to/v2/folder 
+python /path/to/predictf/installation/argdb/train_arc_genes.py /path/to/TF_sequences/folder /path/to/v2/folder 
 ```
 
 **9) Predicting TFs (genomes or metagenomes)**
