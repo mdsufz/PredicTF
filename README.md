@@ -103,6 +103,9 @@ cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-
 
 # 5) Usage
 
+**Note: All FASTA files (.fa) must be composed of aminoacid sequences!"
+
+
 **Predict Transcription Factors**  
 
 If the user only wants to predict Transcription Factors in their target genome(s) using the trained model run the following command:
