@@ -1,11 +1,11 @@
 # PredicTF: a tool to predict bacterial transcription factors in complex microbial communities
 
 # 1) Overview:
-Transcription Factors (TFs) are proteins controlling the rate of genetic information, regulating cellular gene expression. A better understanding of TFs in a bacterial community open revenue for exploring gene regulation in ecosystems where bacteria play a key role. Here we describe PredicTF, the first platform supporting the prediction and classification of putative bacterial TF not only in single species but also in complex microbial communities. In summary, we collected publicly available data on TFs. Initially, we chose to collect data from CollecTF; a bacterial TF database containing experimentally validated TFs. This database was merged to TF sequences from UNIPROT. This merged and hand curated TF database (BacTFDB) was used to train a deep learning model (PredicTF) to predict TFs and their families in genomes and metagenomes. Here, we describe the use of PredicTF to predict TFs for single bacterial species (genomes and metatranscriptomes) and complex communities (metagenomes and metatranscriptomes) (Figure 1). Using PredicTF, the user can determine TFs distribution in complex communities, opening the potential to evaluate regulatory networks in different ecosystems. PredictTF is open-source software.
+Transcription Factors (TFs) are proteins controlling the rate of genetic information, regulating cellular gene expression. A better understanding of TFs in a bacterial community open revenue for exploring gene regulation in ecosystems where bacteria play a key role. Here we describe PredicTF, the first platform supporting the prediction and classification of putative bacterial TF not only in single species but also in complex microbial communities. In summary, we collected publicly available data on TFs. Initially, we chose to collect data from CollecTF; a bacterial TF database containing experimentally validated TFs. This database was merged to TF sequences from UNIPROT. This merged and hand curated TF database (BacTFDB) was used to train a deep learning model (PredicTF) to predict TFs and their families in genomes and metagenomes. Here, we describe the use of PredicTF to predict TFs for single bacterial species (genomes and metatranscriptomes) and complex communities (metagenomes and metatranscriptomes) (Figure 1). Using PredicTF, the user can determine TFs distribution in complex communities, opening the potential to evaluate regulatory networks in different ecosystems. PredictTF is open-source software.  
 
 ![workflow](https://github.com/mdsufz/PredicTF/blob/master/workflow.jpeg)
 **Rational of the pipeline.**
-The pipeline uses The Bacterial Transcription Factor Database (BacTFDB) and DeepARG approach [1] to train (1. Training) a Deep Learning model named PredicTF.  PredicTF can use Genomes (a.1) or Metagenomes (b.1) as input, providing predictions of transcription factors and respective families in a text file (2. Prediction & Annotation). Finally, TFs listed and annotated can be mapped in the Transcriptomes (a.2) or Metatranscriptomes (b.2) providing a list of active TFs in specific conditions (3. Mapping transcripts TFs). 
+The pipeline uses The Bacterial Transcription Factor Database (BacTFDB) and DeepARG approach [1] to train (1. Training) a Deep Learning model named PredicTF.  PredicTF can use Genomes (a.1) or Metagenomes (b.1) as input, providing predictions of transcription factors and respective families in a text file (2. Prediction & Annotation). Finally, TFs listed and annotated can be mapped in the Transcriptomes (a.2) or Metatranscriptomes (b.2) providing a list of active TFs in specific conditions (3. Mapping transcripts TFs).  
 
 # 2)	System Requirements
 The computational resources vary greatly based on the amount of data in your database. The training step requires intensive computational resources, because of the deep learning, so it is recommended to do the training using the GPU routines from Theano - a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently (http://deeplearning.net/software/theano/) [5]. However, heavy computation is required only once to obtain the deep learning model (PredicTF) and the prediction routines do not require such computational resources. PredicTF is an open source tool updated twice a year and it can be downloaded from the GitHub page. 
@@ -15,17 +15,17 @@ To create the Bacterial Transcription Factor Data Base (BacTFDB), we collected d
 
 ![Database](https://github.com/mdsufz/PredicTF/blob/master/database.jpeg)
 **Scheme used for the construction of BacTFDB.**
-Bacterial Transcription Factor Data Base (bacTFDB) were created from from two publicly available databases. We collect 390 TFs from CollecTF and 21.581 from UniProt  (accessed 8-Sep-2019) accumulating 21.581 TF amino acid sequences. We merged the data from CollecTF and UniProt databases resulting in a total of 21.971 TFs amino acid. We removed redundant TF entries and since PredicTF was designed to also assign TF family, TF sequences lacking a TF family were removed. Finally, a manual inspection was performed to remove misleading of spelling, case sensitive and presence of characters associate to the database header. The final database (bacTFDB) contains a total of 11.691 TF unique sequences.
+Bacterial Transcription Factor Data Base (bacTFDB) were created from from two publicly available databases. We collect 390 TFs from CollecTF and 21.581 from UniProt  (accessed 8-Sep-2019) accumulating 21.581 TF amino acid sequences. We merged the data from CollecTF and UniProt databases resulting in a total of 21.971 TFs amino acid. We removed redundant TF entries and since PredicTF was designed to also assign TF family, TF sequences lacking a TF family were removed. Finally, a manual inspection was performed to remove misleading of spelling, case sensitive and presence of characters associate to the database header. The final database (bacTFDB) contains a total of 11.691 TF unique sequences.  
 
 
-# 4)	PredicTF Pipeline
+# 4)	PredicTF Pipeline  
 To use PredicTF the following is required:
 
 Operating system: Linux64
 
 Programming languages: Python 2.7
 
-Module: Anaconda2/5.3.0
+Module: Anaconda2/5.3.0  
 
 
 **4.1) DEPENDENCIES**
@@ -50,11 +50,11 @@ Emboss transeq (http://www.bioinformatics.nl/cgi-bin/emboss/transeq) [8].
 
 Bowtie2 - v2.3.0 (https://sourceforge.net/projects/bowtie-bio/) [9]. 
 
-SAMTools - v1.9 (http://github.com/samtools/) [10].
+SAMTools - v1.9 (http://github.com/samtools/) [10].  
 
 
 
-**4.2) INSTALLATION**
+**4.2) INSTALLATION**  
 
 
 1) Open a terminal and clone the source code:
@@ -88,9 +88,9 @@ pip install tqdm
 ```bash
 git clone https://bitbucket.org/gusphdproj/deeparg-largerepo.git
 ```
-
+  
 **DeepARG original code does not allow for multiple instances of model training. We have modified their source code to allow for this.**
-Copy the following files contained in the folder ***install_files*** to their respectives directories inside the ***deeparg-largerepo*** folder.
+Copy the following files contained in the folder ***install_files*** to their respectives directories inside the ***deeparg-largerepo*** folder.  
 
 ```bash
 cp /path/to/PredicTF/install_files/main/deepARG.py /path/to/PredicTF/deeparg-largerepo/  
@@ -98,12 +98,12 @@ cp /path/to/PredicTF/install_files/main/deepARG.py /path/to/PredicTF/deeparg-lar
 cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-largerepo/predict/bin/
 
 ```
-
+  
 
 
 # 5) Usage
 
-**Predict Transcription Factors**
+**Predict Transcription Factors**  
 
 If the user only wants to predict Transcription Factors in their target genome(s) using the trained model run the following command:
 
@@ -112,7 +112,7 @@ If the user only wants to predict Transcription Factors in their target genome(s
 sh predictf_in_genome.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
 
-**Training a new model**
+**Training a new model**  
 
 The user also has the opportunity to generate new models for other genes of interest.  
 
@@ -125,33 +125,33 @@ The database(FASTA file) to be used for training requires that the header matche
 
 In this example A0A024HKB0 is the unique number that identify a specific TF, FEATURES is mandatory, CollecTF is the database where the sequence came from, LysR is the family (class) of transcription factor that ClcR (name) belongs to.
 
-**Note: an example file can be downloaded from [here](https://github.com/mdsufz/PredicTF/blob/master/BacTFDB/database/v2/DB_Full_final.fasta).
+**Note: an example file can be downloaded from [here](https://github.com/mdsufz/PredicTF/blob/master/BacTFDB/database/v2/DB_Full_final.fasta).  
 
 
-Next, the user only needs to run the following command:
+Next, the user only needs to run the following command:  
 ```bash
 sh predictf_train_genes.sh /path/to/project/folder /path/to/fasta_file/for/training.fa /path/to/folder/where/predictf_env/was/created /path/to/predicTF/installation/folder
-```
+```  
 *Note: this step requires a large amount of computational resources and may need to be performed in a cluster.*  
 
 All required files and folders generated during this process will be stored in the user-defined project folder.  
 
-To perform predictions in your intended genomes using your own models please run the following command:
+To perform predictions in your intended genomes using your own models please run the following command:  
 
 ```bash 
 sh predictf_in_genome_user.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
 
-
+  
 
 # Mapping TFs (transcriptomes or metatranscriptomes)
 
-The user also has the possibility to integrate transcriptomic data with genomic data.To do so, run the following commands:
+The user also has the possibility to integrate transcriptomic data with genomic data.To do so, run the following commands:  
 
 
-# 6) Cite us:
+# 6) Cite us:  
 
-A preprint version of PredicTF is available [here](https://www.biorxiv.org/content/10.1101/2021.01.28.428666v2). A link to the published manuscript will be provided as soon as possible.
+A preprint version of PredicTF is available [here](https://www.biorxiv.org/content/10.1101/2021.01.28.428666v2). A link to the published manuscript will be provided as soon as possible.  
 
 # 7) References
 
