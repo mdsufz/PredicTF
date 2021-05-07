@@ -127,7 +127,7 @@ if "align" in options:
     print(" ".join([gopt.path+'/bin/diamond ', aligner,
                         '-q', options['input'],
                         #'-d', gopt.path+"/database/"+version+"/features",
-                        '-d',options['folder']+"/features",# location where the features.dmnd is stored - should be dynamic
+                        '-d',options['folder']+"/database/v2/features",# location where the features.dmnd is stored - should be dynamic
                         '-k', str(numAlignmentsPerEntry),
                         '--id', str(iden),
                         '--sensitive',
@@ -139,7 +139,7 @@ if "align" in options:
     os.system(" ".join([gopt.path+'/bin/diamond ', aligner,
                         '-q', options['input'],
                         #'-d', gopt.path+"/database/"+version+"/features",
-                      	'-d',options['folder']+"/features",# location where the features.dmnd is stored - should be dynamic
+                      	'-d',options['folder']+"/database/v2/features",# location where the features.dmnd is stored - should be dynamic
                         '-k', str(numAlignmentsPerEntry),
                         '--id', str(iden),
                         '--sensitive',

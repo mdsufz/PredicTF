@@ -32,6 +32,8 @@ Module: Anaconda2/5.3.0
 
 PredicTF requires the installation:
 
+DeepARG repository (https://bitbucket.org/gusphdproj/deeparg-largerepo/src/master/) [1];
+
 DIAMOND (https://github.com/python-diamond/Diamond) [2]; 
 
 Nolearn Lasagne deep learning library (https://lasagne.readthedocs.io/en/latest/) [3]; 
@@ -81,6 +83,23 @@ pip install -r https://raw.githubusercontent.com/dnouri/nolearn/0.6.0/requiremen
 pip install nolearn
 pip install tqdm
 ```
+
+6) Clone DeepArg repository inside your PredicTF folder
+```bash
+git clone https://bitbucket.org/gusphdproj/deeparg-largerepo.git
+```
+
+**DeepARG original code does not allow for multiple instances of model training. We have modified their source code to allow for this.**
+**Copy the following files to their respectives directories inside the *deeparg-largerepo* folder**
+
+```bash
+cp /path/to/PredicTF/install_files/main/deepARG.py /path/to/PredicTF/deeparg-largerepo/  
+
+cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-largerepo/predict/bin/
+
+```
+
+
 
 # 5) Usage
 
