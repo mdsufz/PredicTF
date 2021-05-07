@@ -142,9 +142,9 @@ To perform predictions in your intended genomes using your own models please run
 sh predictf_in_genome_user.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
 
-=====
 
-**Mapping TFs (transcriptomes or metatranscriptomes)**
+
+# Mapping TFs (transcriptomes or metatranscriptomes)
 
 The user also has the possibility to integrate transcriptomic data with genomic data.To do so, run the following commands:
 
