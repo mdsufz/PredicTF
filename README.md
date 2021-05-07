@@ -32,23 +32,25 @@ Module: Anaconda2/5.3.0
 
 PredicTF requires the installation:
 
-DeepARG repository (https://bitbucket.org/gusphdproj/deeparg-largerepo/src/master/) [1];
+DeepARG repository (https://bitbucket.org/gusphdproj/deeparg-largerepo/src/master/) [1].  
 
-DIAMOND (https://github.com/python-diamond/Diamond) [2]; 
+DIAMOND (https://github.com/python-diamond/Diamond) [2].   
 
-Nolearn Lasagne deep learning library (https://lasagne.readthedocs.io/en/latest/) [3]; 
+Nolearn Lasagne deep learning library (https://lasagne.readthedocs.io/en/latest/) [3].  
 
-Sklearn machine learning routines (https://scikit-learn.org/stable/) [4]; 
+Sklearn machine learning routines (https://scikit-learn.org/stable/) [4].  
 
-Theano (http://deeplearning.net/software/theano/) [5]. 
+Theano (http://deeplearning.net/software/theano/) [5].
 
-Trim Galore - v0.0.4 dev (https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) [6]. 
+**the following are only required when integrating (meta)transcriptomic data**  
 
-MetaSPADES - v3.12.0 (https://github.com/ablab/spades#meta) [7]. 
+Trim Galore - v0.0.4 dev (https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) [6].  
 
-Emboss transeq (http://www.bioinformatics.nl/cgi-bin/emboss/transeq) [8]. 
+MetaSPADES - v3.12.0 (https://github.com/ablab/spades#meta) [7].  
 
-Bowtie2 - v2.3.0 (https://sourceforge.net/projects/bowtie-bio/) [9]. 
+Emboss transeq (http://www.bioinformatics.nl/cgi-bin/emboss/transeq) [8].  
+
+Bowtie2 - v2.3.0 (https://sourceforge.net/projects/bowtie-bio/) [9].  
 
 SAMTools - v1.9 (http://github.com/samtools/) [10].  
 
