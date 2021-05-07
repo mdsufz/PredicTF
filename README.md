@@ -91,7 +91,7 @@ pip install tqdm
 git clone https://bitbucket.org/gusphdproj/deeparg-largerepo.git
 ```
   
-**DeepARG original code does not allow for multiple instances of model training. We have modified their source code to allow for this.**
+**DeepARG original code does not allow for multiple instances of model training and testing. We have modified their source code to allow for this.**
 Copy the following files contained in the folder ***install_files*** to their respectives directories inside the ***deeparg-largerepo*** folder.  
 
 ```bash
@@ -103,7 +103,7 @@ cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-
   
 # 5) Usage
 
-**Note: All FASTA files (.fa) must be composed of aminoacid sequences!"
+**Note: All FASTA files (.fa) must be composed of aminoacid sequences!"**
 
 
 **Predict Transcription Factors**  
