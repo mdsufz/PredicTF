@@ -90,7 +90,7 @@ git clone https://bitbucket.org/gusphdproj/deeparg-largerepo.git
 ```
 
 **DeepARG original code does not allow for multiple instances of model training. We have modified their source code to allow for this.**
-**Copy the following files to their respectives directories inside the *deeparg-largerepo* folder**
+Copy the following files contained in the folder ***install_files*** to their respectives directories inside the ***deeparg-largerepo*** folder.
 
 ```bash
 cp /path/to/PredicTF/install_files/main/deepARG.py /path/to/PredicTF/deeparg-largerepo/  
@@ -125,7 +125,7 @@ The database(FASTA file) to be used for training requires that the header matche
 
 In this example A0A024HKB0 is the unique number that identify a specific TF, FEATURES is mandatory, CollecTF is the database where the sequence came from, LysR is the family (class) of transcription factor that ClcR (name) belongs to.
 
-**Note: an example file can be downloaded from [here].
+**Note: an example file can be downloaded from [here](https://github.com/mdsufz/PredicTF/blob/master/BacTFDB/database/v2/DB_Full_final.fasta).
 
 
 Next, the user only needs to run the following command:
