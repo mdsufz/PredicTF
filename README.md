@@ -101,8 +101,6 @@ cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-
 
 ```
   
-
-
 # 5) Usage
 
 **Note: All FASTA files (.fa) must be composed of aminoacid sequences!"
@@ -116,6 +114,13 @@ If the user only wants to predict Transcription Factors in their target genome(s
 ```bash
 sh predictf_in_genome.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
+
+This script takes as input the following:
+
+- 1 location of PredicTF (e.g. /home/user/PredicTf)  
+- 2 location of the target genome for predicting TFs (in aminoacid format)  
+- 3 folder to store results (e.g. /home/project/results)  
+
 
 **Training a new model**  
 
@@ -137,9 +142,16 @@ Next, the user only needs to run the following command:
 ```bash
 sh predictf_train_genes.sh /path/to/project/folder /path/to/fasta_file/for/training.fa /path/to/folder/where/predictf_env/was/created /path/to/predicTF/installation/folder
 ```  
-*Note: this step requires a large amount of computational resources and may need to be performed in a cluster.*  
+*(Note: this step requires a large amount of computational resources and may need to be performed in a cluster.)*  
 
-All required files and folders generated during this process will be stored in the user-defined project folder.  
+This script takes as input the following:
+
+- 1 project folder location (e.g. /home/user/project)  
+- 2 the fasta file with the TFs (used to create the similarity matrix)  
+- 3 location where the conda environment was generated (e.g /home/user)  
+- 4 location of PredicTF installation folder (e.g. /home/user/PredicTF)  
+
+***All resulting files and folders generated during this process will be stored in the user-defined project folder.***  
 
 To perform predictions in your intended genomes using your own models please run the following command:  
 
@@ -147,7 +159,13 @@ To perform predictions in your intended genomes using your own models please run
 sh predictf_in_genome_user.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
 
-  
+ This tasks takes as inputs the following:
+ 
+- 1 location of PredicTF (e.g. /home/user/PredicTf)  
+- 2 location of the target genome for predicting TFs (in aminoacid format)  
+- 3 folder to store results (e.g. /home/test_genome/results)  
+- 4 path to the project folder where the new model is stored (e.g. /home/project)  
+
 
 # Mapping TFs (transcriptomes or metatranscriptomes)
 
