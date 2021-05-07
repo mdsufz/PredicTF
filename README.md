@@ -12,16 +12,6 @@ The computational resources vary greatly based on the amount of data in your dat
 
 # 3)	Database
 To create the Bacterial Transcription Factor Data Base (BacTFDB), we collected data from two publicly available databases. Initially, we chose to collect data from CollecTF [11], a well described and characterized database. Since CollecTF does not provide an API for bulk download, we develop Python code (version 2.7) using the Beautiful Soup 4.4.0 library to recover the data from CollecTF. With this strategy, we downloaded sequences from 390 experimentally validated TFs distributed over 44 TFs families. Additionally, we retrieved TF sequences from UNIPROT using UNIPROT’s API and the filters “Reviewed (Swiss-Prot) - Manually annotated”, bacteria taxonomy and a set of specific keywords (Transcription factor, transcriptional factor, regulator, transcriptional repressor, transcriptional activator, transcriptional regulator). The UNIPROT API was accessed on 8-Sep-2019. Next, we merged the data collected from CollecTF and UNIPROT resulting in a total of 21.971 TFs. Next, we removed redundant TF entries and TF sequences lacking a TF family since PredicTF was designed to also assign TF family. Finally, a manual inspection was performed to remove case sensitive and presence of characters associated to the database header. The final database (BacTFDB) contains a total of 11.691 TF unique sequences (Figure 2). 
-To create your own database, the header in your FASTA file needs to match the following structure: 
-
-
-**>uniq_id|FEATURES|category|group|name**
-
-**Example: >A0A024HKB0|FEATURES|CollecTF|LysR|ClcR**
-
-In this example A0A024HKB0 is the unique number that identify a specific TF, FEATURES is mandatory, CollecTF is the database where the sequence came from, LysR is the family (group) of transcription factor that ClcR (name) belongs. 
-
-**Note: an example file can be downloaded from [here].
 
 ![Database](https://github.com/mdsufz/PredicTF/blob/master/database.jpeg)
 **Scheme used for the construction of BacTFDB.**
@@ -29,19 +19,18 @@ Bacterial Transcription Factor Data Base (bacTFDB) were created from from two pu
 
 
 # 4)	PredicTF Pipeline
-To use PredicTF it is required some dependencies.
+To use PredicTF the following is required:
 
 Operating system: Linux64
 
 Programming languages: Python 2.7
 
+Module: Anaconda2/5.3.0
 
 
 **4.1) DEPENDENCIES**
 
-PredicTF requires the instalation:
-
-DeepARG (https://github.com/gaarangoa/deeparg2.0) [1];
+PredicTF requires the installation:
 
 DIAMOND (https://github.com/python-diamond/Diamond) [2]; 
 
@@ -63,114 +52,83 @@ SAMTools - v1.9 (http://github.com/samtools/) [10].
 
 
 
-**4.2) INSTALATION**
+**4.2) INSTALLATION**
 
-1) First you must be sure that DeepARG [1] was correctly installed
 
-2) Open a terminal and clone the source code:
+1) Open a terminal and clone the source code:
 ```bash
-git clone git@github.com:mdsufz/PredicTF.git
+git clone https://github.com/mdsufz/PredicTF.git
+```
+
+2) Create a conda environment in a location of choice
+```bash
+conda create -n predict_env python=2.7.18
+```
+
+3) Activate the conda environment
+```bash
+conda activate predict_env
+```
+
+4) Install bioconda and diamond
+```bash
+conda install -c bioconda diamond==0.9.24
+```
+
+5) Install additional dependencies
+```bash
+pip install -r https://raw.githubusercontent.com/dnouri/nolearn/0.6.0/requirements.txt
+pip install nolearn
+pip install tqdm
 ```
 
 # 5) Usage
 
+**Predict Transcription Factors**
 
-**1) Activating DeepARG v2.0 environment in the terminal**
+If the user only wants to predict Transcription Factors in their target genome(s) using the trained model run the following command:
+
 
 ```bash
-source /path_to_deeparg-ss/deeparg-ss/env-deeparg/bin/activate # Needs to be changed for our folder with deeparg installed. 
+sh predictf_in_genome.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
 
-**2) Creating folders**
-Create folders (/model and /v2) in your directory of choice:
-```bash
-mkdir model 
+**Training a new model**
 
-mkdir v2
+The user also has the opportunity to generate new models for other genes of interest.  
+
+The database(FASTA file) to be used for training requires that the header matches the following structure:
+
+
+**>uniq_id|FEATURES|source|class|name**
+
+**Example: >A0A024HKB0|FEATURES|CollecTF|LysR|ClcR**
+
+In this example A0A024HKB0 is the unique number that identify a specific TF, FEATURES is mandatory, CollecTF is the database where the sequence came from, LysR is the family (class) of transcription factor that ClcR (name) belongs to.
+
+**Note: an example file can be downloaded from [here].
+
+
+Next, the user only needs to run the following command:
+```bash
+sh predictf_train_genes.sh /path/to/project/folder /path/to/fasta_file/for/training.fa /path/to/folder/where/predictf_env/was/created /path/to/predicTF/installation/folder
 ```
-Create a /v2 folder inside the /model folder:
-```bash
-cd model
+*Note: this step requires a large amount of computational resources and may need to be performed in a cluster.*  
 
-mkdir v2 
-```
+All required files and folders generated during this process will be stored in the user-defined project folder.  
 
-**Steps 3 to 8 are for those who created their own databases and will train their own models.**
+To perform predictions in your intended genomes using your own models please run the following command:
 
-**Very Important: If you are using PredicTF with BacTFDB (database described in this github), skip steps 3 to 8**
-
-Create a /database folder inside the project folder:
-```bash
-mkdir /path/to/project/folder/database
-```  
-**3) Generating a sequence length file**
-This file will contain the headers and the protein lengths for each TF belonging to the database. This file will be used in the training step.  
-```bash
-python seq_length.py  /path/to/folder/file/with/TF_sequences.fasta > /path/to/project/folder/features.gene.length 
-```
-
-**4) Building database index:**
-```bash
-/path/to/predictf/installation/bin/diamond makedb --in /path/to/folder/file/with/TF_sequences.fasta --db /path/to/project/folder/features #this step will create a .dmnd file called *features*.
+```bash 
+sh predictf_in_genome_user.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
 ```
 
-**5) Generating gene-like sequences from database:**
-```bash
-python /path/to/predictf/installation/train/generate_train_genes.py /path/to/folder/file/with/TF_sequences.fasta /path/to/project/folder/train_genes.fasta train
-```
+====
 
-**6) Building similarity matrix:**
-```bash
-/path/to/predictf/installation/bin/diamond blastp --db /path/to/project/folder/features --query /path/to/project/folder/train_genes.fasta --id 30 --evalue 1e-10 --sensitive -k 10000 -a /path/to/project/folder/train_genes # This will create a diamond alignment file ".daa".
+**Mapping TFs (transcriptomes or metatranscriptomes)**
 
-/path/to/predictf/installation/bin/diamond view -a /path/to/project/folder/train_genes.daa -o /path/to/project/folder/train_genes.tsv
-```
+The user also has the possibility to integrate transcriptomic data with genomic data.To do so, run the following commands:
 
-**7) Make copies of the files train* and features* in the /v2 and /database folders**
-```bash
-cp train* v2
-cp features.* path/to/project/folder/database/ 
-cp train* path/to/project/folder/database/
-```
-
-**8) Training the model**
-
-Note: Make sure that your fasta file header follows this schema:
->uniq_id|category|group|name
-
-Note2: this step requires a large amount of computational resources and may need to be performed in a cluster.
-
-```bash
-python /path/to/predictf/installation/argdb/train_arc_genes.py /path/to/TF_sequences/folder /path/to/v2/folder 
-```
-
-**9) Predicting TFs (genomes or metagenomes)**
-
-**Predicting TFs using the generated database**
-
-```bash
-python /path/to/deeparg-ss/deepARG.py --align --type prot --genes --input path/to/target/genomes/genome.fasta --out path/to/results/folder/file2.out --folder #path/to/parent/folder/of/model_and_v2 #where the latter folders were created
-```
-
-**10) Mapping TFs (transcriptomes or metatranscriptomes)**
-
-1) Processing the output of Predicting TFs (step 9):
-
-```bash
-python process_output_predictf.py <deeparg/file.out.align.daa.tsv> <deeparg/file.out.mapping.ARG> <sequences_input.fa> <predicted_TFs.fa> <predicted_TFs_intervals.tsv>
-```
-
-2) Obtaining the mapped regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes:
-
-```bash
-python get_mapped_regions.sam <mapping.sam> <output_directory>
-```
-
-3) Checking if the predicted TFs are covered by the transcriptome or metatranscriptome:
-
-```bash
-python check_mapped_TFs.py <predicted_TFs.fa>  <output_directory/mapped_regions.tsv>
-```
 
 # 6) Cite us:
 
