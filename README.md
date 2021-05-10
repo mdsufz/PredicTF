@@ -171,6 +171,31 @@ sh predictf_in_genome_user.sh /path/to/PredicTF/folder /path/to/target/genome.fa
 
 The user also has the possibility to integrate transcriptomic data with genomic data.To do so, run the following commands:  
 
+**Process the output of Predicting TFs (step 9):**
+<sequences_input.fa> - genome file used to predict TFs
+<predicted_TFs.fa> - name to be assigned to the results.fa (just give the name)
+<predicted_TFs_intervals.tsv> - name of the file where the TFs are located in the genome file (just give the name)
+
+```bash
+python process_output_predictf.py <deeparg/file.out.align.daa.tsv> <deeparg/file.out.mapping.ARG> <sequences_input.fa> <predicted_TFs.fa> <predicted_TFs_intervals.tsv>
+```
+
+Map the regions of each genome or metagenome in their respective transcriptomes or metatranscriptomes:
+
+<mapping.sam> - name to be assigned to the output file
+<output_directory> - name of the folder where to store files
+
+```bash
+python get_mapped_regions.sam <mapping.sam> <output_directory>
+```
+Check if the predicted TFs are covered by the transcriptome or metatranscriptome:
+
+<output_directory/mapped_regions.tsv> - folder from previous step
+<predicted_TFs_intervals.tsv> - file from 1st step
+
+```bash
+python check_mapped_TFs.py <predicted_TFs_intervals.tsv>  <output_directory/mapped_regions.tsv>
+```
 
 # 6) Cite us:  
 
