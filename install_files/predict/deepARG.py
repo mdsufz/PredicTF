@@ -146,7 +146,7 @@ def process(fin, fon, iden, version, evalue, prob, minCoverage, pipeline, versio
     print("Loading deep learning model ...")
     deepL = cPickle.load(
         #open(opt.path+"/model/"+version_m+"/metadata"+version+".pkl"))
-	open(path+"/model/"+version_m+"/metadata"+version+".pkl"))
+	open(path+"BacTFDB/model/"+version_m+"/metadata"+version+".pkl"))
     clf = NeuralNet(
         layers=model(deepL['input_nodes'], deepL['output_nodes']),
         update=nesterov_momentum,
@@ -158,12 +158,12 @@ def process(fin, fon, iden, version, evalue, prob, minCoverage, pipeline, versio
     )
 
     #clf.load_params_from(opt.path+"/model/"+version_m+"/model"+version+".pkl")
-    clf.load_params_from(path+"/model/"+version_m+"/model"+version+".pkl")
+    clf.load_params_from(path+"BacTFDB/model/"+version_m+"/model"+version+".pkl")
     # print deepL['features']
 
     print("loading gene lengths")
     glen = {i.split()[0]: float(i.split()[1]) for i in open(
-    	path+"/features.gene.length")} 
+    	path+"/BacTFDB/database/"+version_m+""/features.gene.length")} 
 	#opt.path+"/database/"+version_m+"/features.gene.length")}
 
     print("Loading sample to analyze")
