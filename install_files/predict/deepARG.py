@@ -163,7 +163,7 @@ def process(fin, fon, iden, version, evalue, prob, minCoverage, pipeline, versio
 
     print("loading gene lengths")
     glen = {i.split()[0]: float(i.split()[1]) for i in open(
-    	path+"/BacTFDB/database/"+version_m+""/features.gene.length")} 
+    	path+"/BacTFDB/database/"+version_m+"/features.gene.length")} 
 	#opt.path+"/database/"+version_m+"/features.gene.length")}
 
     print("Loading sample to analyze")
