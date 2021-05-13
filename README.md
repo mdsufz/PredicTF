@@ -66,12 +66,12 @@ git clone https://github.com/mdsufz/PredicTF.git
 
 2) Create a conda environment in a location of choice
 ```bash
-conda create -n predict_env python=2.7.18
+conda create -n deeparg_env python=2.7.18
 ```
 
 3) Activate the conda environment
 ```bash
-conda activate predict_env
+conda activate deeparg_env
 ```
 
 4) Install bioconda and diamond
