@@ -100,6 +100,11 @@ cp /path/to/PredicTF/install_files/main/deepARG.py /path/to/PredicTF/deeparg-lar
 cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-largerepo/predict/bin/
 
 ```
+
+**BacTFDB model files missing?** If by any chance the folder /BacTFDB/model/v2 is empty please use the following link get the necessary files and store them in /PredicTF/BacTFDB/model/v2/:
+
+Files - https://nc.ufz.de/s/PAYQsioDRXxpE58
+Password - Eon4J946
   
 # 5) Usage
 
