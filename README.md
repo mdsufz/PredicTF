@@ -117,6 +117,18 @@ For instance, deepARG was cloned at /home/user/deeparg-ss/ The options.py file s
 path = '/home/user/deeparg-ss/';
 ```
 
+**Finally allow diamond to be executed:**
+
+Go to the path you modified in the options.py and run:
+
+chmod +x diamond (only for LINUX)
+
+For example:
+
+```bash
+cd /home/user/deeparg
+chmod +x diamond
+```
   
 # 5) Usage
 
