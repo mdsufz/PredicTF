@@ -105,6 +105,18 @@ cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-
 
 Files - https://nc.ufz.de/s/PAYQsioDRXxpE58
 Password - Eon4J946
+
+**Go to the directory where the program was saved and open the file options.py**
+
+Replace path = '/deeparg-ss/'; with the current directory (deepARG path).
+
+
+For instance, deepARG was cloned at /home/user/deeparg-ss/ The options.py file should looks like
+
+```bash
+path = '/home/user/deeparg-ss/';
+```
+
   
 # 5) Usage
 
@@ -118,6 +130,13 @@ If the user only wants to predict Transcription Factors in their target genome(s
 
 ```bash
 sh predictf_in_genome.sh /path/to/PredicTF/folder /path/to/target/genome.fa /path/to/output/folder
+```
+
+As an example:
+
+
+```bash
+sh predictf_in_genome.sh /home/user/PredicTF /home/user/fasta_files/target_genome.fa /home/project/results
 ```
 
 This script takes as input the following:
