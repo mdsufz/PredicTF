@@ -64,7 +64,14 @@ SAMTools - v1.9 (http://github.com/samtools/) [10].
 git clone https://github.com/mdsufz/PredicTF.git
 ```
 
-2) Create a conda environment in a location of choice
+2) If you don't have conda installed use the following:
+
+```bash
+wget https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh
+sh Anaconda2-2019.10-Linux-x86_64.sh
+```
+Create a conda environment in a location of choice
+
 ```bash
 conda create -n deeparg_env python=2.7.18
 ```
