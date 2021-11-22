@@ -5,7 +5,7 @@
 #3 folder to store results (e.g. /home/project/results)
 
 
-conda activate $1/deeparg_env
+#conda activate $1/deeparg_env
 
 mkdir $3
 
