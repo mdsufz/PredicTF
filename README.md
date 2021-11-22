@@ -21,11 +21,11 @@ Bacterial Transcription Factor Data Base (bacTFDB) were created from from two pu
 # 4)	PredicTF Pipeline  
 To use PredicTF the following is required:
 
-Operating system: Linux64
+Operating system: ***Linux64***
 
-Programming languages: Python 2.7
+Programming languages: ***Python 2.7***
 
-Module: Anaconda2/5.3.0  
+Module: ***Anaconda2/5.3.0***  
 
 
 **4.1) DEPENDENCIES**
@@ -64,13 +64,13 @@ SAMTools - v1.9 (http://github.com/samtools/) [10].
 git clone https://github.com/mdsufz/PredicTF.git
 ```
 
-2) If you don't have conda installed use the following:
+2) If you don't have conda installed use the following:   
 
 ```bash
 wget https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh
 sh Anaconda2-2019.10-Linux-x86_64.sh
 ```
-Create a conda environment in a location of choice
+Create a conda environment in a location of choice   
 
 ```bash
 conda create -n deeparg_env python=2.7.18
@@ -111,29 +111,29 @@ cp /path/to/PredicTF/install_files/predict/deepARG.py /path/to/PredicTF/deeparg-
 **BacTFDB model files** Due to the size of the model files you will need to use the following link get the necessary files and store them in /PredicTF/BacTFDB/model/v2/:
 
 Files - https://nc.ufz.de/s/PAYQsioDRXxpE58
-Password - Eon4J946
+Password - Eon4J946   
 
-**Go to the directory where the program was saved and open the file options.py**
+**Go to the directory where the program was saved and open the file options.py**   
 
-Replace path = '/deeparg-ss/'; with the current directory (deepARG path).
+Replace path = '/deeparg-ss/'; with the current directory (deepARG path).   
 
 
-For instance, deepARG was cloned at /home/user/deeparg-ss/ The options.py file should looks like
+For instance, deepARG was cloned at /home/user/deeparg-largerepo/ The options.py file should looks like
 
 ```bash
-path = '/home/user/deeparg-ss/';
+path = '/home/user/deeparg-largerepo/';
 ```
 
-**Finally allow diamond to be executed:**
+**Finally allow diamond to be executed:**   
 
-Go to the path you modified in the options.py and run:
+Go to the path you modified in the options.py and run:   
 
-chmod +x diamond (only for LINUX)
+chmod +x diamond (only for LINUX)   
 
-For example:
+For example:   
 
 ```bash
-cd /home/user/deeparg
+cd /home/user/deeparg-largerepo
 chmod +x diamond
 ```
   
