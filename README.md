@@ -224,7 +224,7 @@ sh /path/to/PredicTF/scripts/transcript2genome.sh path/to/PredicTF path/to/folde
 
 # 6) Cite us:  
 
-A preprint version of PredicTF is available [here](https://www.biorxiv.org/content/10.1101/2021.01.28.428666v2). A link to the published manuscript will be provided as soon as possible.  
+PredicTF is available [here](https://environmentalmicrobiome.biomedcentral.com/articles/10.1186/s40793-021-00394-x).
 
 # 7) References
 
